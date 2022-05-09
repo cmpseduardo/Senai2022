@@ -1,0 +1,66 @@
+package visao;
+import java.util.Scanner;
+public class Principal {
+	
+	static String nomeProduto;
+	static String formaPagamento;
+	static String tipoPagamento;
+	static String dataCompra;
+	static double valorProduto, valorRecebido, troco, subtotal;
+	
+		
+	static Scanner leia = new Scanner(System.in);
+	private static int codBarras;
+	
+	public static void main(String[] args) {
+		
+		
+		int opcao;
+		
+		do { 
+		System.out.println("=== Projeto Caixa de Supermercado ===");
+		System.out.println("\n1 - Cadastrar Produto "
+				+ "\n2 - Compra Cliente;"
+				+ "\n0 - Sair;");
+		
+		
+		opcao = leia.nextInt();
+		
+		switch(opcao) {
+		
+		case 1:
+			cadastrarProduto();
+			break;
+		case 2:
+			comprasCliente();
+		
+			}
+		
+		}while(opcao !=0);
+	}
+
+	public static void cadastrarProduto() {
+		System.out.println("CÓDIGO DE BARRAS: ");
+		codBarras = leia.nextInt();
+		System.out.println("PRODUTO: ");
+		nomeProduto = leia.next();
+		System.out.println("VALOR PRODUTO: ");
+		valorProduto = leia.nextFloat();
+		
+	}
+	
+	public static void comprasCliente() {
+		System.out.println("Digite o código de barras do produto: ");
+		int buscar = leia.nextInt();
+		
+		if(buscar != codBarras) {
+		System.out.println("Código de Barras não encontrado");
+		
+		} else {
+			System.out.println("CÓDIGO DE BARRAS: " + codBarras + "\n"
+					+ "PRODUTO: " + nomeProduto  + "\n"
+					+ "VALOR:" + valorProduto);
+		}
+	}
+
+}
